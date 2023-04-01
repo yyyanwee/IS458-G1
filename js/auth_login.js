@@ -30,6 +30,8 @@ function login() {
 
             // Store the access token in sessionStorage
             sessionStorage.setItem('accessToken', accessToken);
+            cart = [];
+            sessionStorage.setItem('cart', JSON.stringify(cart));
 
             // Show an alert message before redirecting to the products page
             alert('Login successful! You will now be redirected to the products page.');
