@@ -33,6 +33,11 @@ function login() {
             cart = [];
             sessionStorage.setItem('cart', JSON.stringify(cart));
 
+            // Get the username
+            const username = result.getIdToken().payload['cognito:username'];
+            console.log('Username:', username);
+            sessionStorage.setItem('username', username);
+
             // Show an alert message before redirecting to the products page
             alert('Login successful! You will now be redirected to the products page.');
 
