@@ -132,6 +132,8 @@ function renderCartItems() {
     });
 
     document.getElementById("total").innerHTML = '$' + total;
+
+    sessionStorage.setItem('total',total)
 }
 
 // call the renderCartItems function to initially render the cart items

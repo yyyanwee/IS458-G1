@@ -20,6 +20,7 @@ const management = document.getElementById('management');
 
 if (username == 'brandon.chris972@gmail.com') {
     management.style.display = 'flex';
+} else {
     management.style.display = 'none';
 }
 

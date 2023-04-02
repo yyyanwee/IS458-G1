@@ -6,15 +6,6 @@
     <title>Au Naturel Web Store</title>
     <!-- Import Tailwind CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
-
-    <script>
-        // Check if the username is not equal to "something"
-        username = sessionStorage.getItem('username');
-        if (username !== "brandon.chris972@gmail.com") {
-            // Redirect to a different page
-            window.location.href = "./index.html";
-        }
-    </script>
 </head>
 
 <body>
@@ -123,98 +114,158 @@
 
 
     <!-- Content -->
+    <!--
+  This component uses @tailwindcss/forms
 
-    <!-- Add a button to open the modal -->
-    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4 ml-2"
-        onclick="openModal()">
-        Add Product
-    </button>
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
 
-    <!-- Define the modal -->
-    <div id="modal" class="z-10 inset-0 overflow-y-auto hidden">
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+  plugins: [require('@tailwindcss/forms')]
+-->
+
+    <section>
+        <h1 class="sr-only">Checkout</h1>
+
+        <div class="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
+            <div class="bg-gray-50 py-12 md:py-24">
+                <div class="mx-auto max-w-lg space-y-8 px-4 lg:px-8">
+                    <div class="flex items-center gap-4">
+                        <svg class="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.41 10.3847C1.14777 7.4194 2.85643 4.7861 5.2639 2.90424C7.6714 1.02234 10.6393 0 13.695 0C16.7507 0 19.7186 1.02234 22.1261 2.90424C24.5336 4.7861 26.2422 7.4194 26.98 10.3847H25.78C23.7557 10.3549 21.7729 10.9599 20.11 12.1147C20.014 12.1842 19.9138 12.2477 19.81 12.3047H19.67C19.5662 12.2477 19.466 12.1842 19.37 12.1147C17.6924 10.9866 15.7166 10.3841 13.695 10.3841C11.6734 10.3841 9.6976 10.9866 8.02 12.1147C7.924 12.1842 7.8238 12.2477 7.72 12.3047H7.58C7.4762 12.2477 7.376 12.1842 7.28 12.1147C5.6171 10.9599 3.6343 10.3549 1.61 10.3847H0.41ZM23.62 16.6547C24.236 16.175 24.9995 15.924 25.78 15.9447H27.39V12.7347H25.78C24.4052 12.7181 23.0619 13.146 21.95 13.9547C21.3243 14.416 20.5674 14.6649 19.79 14.6649C19.0126 14.6649 18.2557 14.416 17.63 13.9547C16.4899 13.1611 15.1341 12.7356 13.745 12.7356C12.3559 12.7356 11.0001 13.1611 9.86 13.9547C9.2343 14.416 8.4774 14.6649 7.7 14.6649C6.9226 14.6649 6.1657 14.416 5.54 13.9547C4.4144 13.1356 3.0518 12.7072 1.66 12.7347H0V15.9447H1.61C2.39051 15.924 3.154 16.175 3.77 16.6547C4.908 17.4489 6.2623 17.8747 7.65 17.8747C9.0377 17.8747 10.392 17.4489 11.53 16.6547C12.1468 16.1765 12.9097 15.9257 13.69 15.9447C14.4708 15.9223 15.2348 16.1735 15.85 16.6547C16.9901 17.4484 18.3459 17.8738 19.735 17.8738C21.1241 17.8738 22.4799 17.4484 23.62 16.6547ZM23.62 22.3947C24.236 21.915 24.9995 21.664 25.78 21.6847H27.39V18.4747H25.78C24.4052 18.4581 23.0619 18.886 21.95 19.6947C21.3243 20.156 20.5674 20.4049 19.79 20.4049C19.0126 20.4049 18.2557 20.156 17.63 19.6947C16.4899 18.9011 15.1341 18.4757 13.745 18.4757C12.3559 18.4757 11.0001 18.9011 9.86 19.6947C9.2343 20.156 8.4774 20.4049 7.7 20.4049C6.9226 20.4049 6.1657 20.156 5.54 19.6947C4.4144 18.8757 3.0518 18.4472 1.66 18.4747H0V21.6847H1.61C2.39051 21.664 3.154 21.915 3.77 22.3947C4.908 23.1889 6.2623 23.6147 7.65 23.6147C9.0377 23.6147 10.392 23.1889 11.53 22.3947C12.1468 21.9165 12.9097 21.6657 13.69 21.6847C14.4708 21.6623 15.2348 21.9135 15.85 22.3947C16.9901 23.1884 18.3459 23.6138 19.735 23.6138C21.1241 23.6138 22.4799 23.1884 23.62 22.3947Z"
+                                fill="currentColor" />
+                        </svg>
+
+                        <h2 class="font-medium text-gray-900">Your Cart</h2>
+                    </div>
+
+                    <div>
+                        <p class="text-2xl font-medium tracking-tight text-gray-900" id="total">
+                        </p>
+
+                        <p class="mt-1 text-sm text-gray-600">For the purchase of</p>
+                    </div>
+
+                    <div>
+                        <div class="flow-root">
+                            <ul class="-my-4 divide-y divide-gray-100" id='product-list'>
+                                <li class="flex items-center gap-4 py-4">
+                                    <div>
+                                        <h3 class="text-sm text-gray-900" id="name"></h3>
+                                        <h6 class="text-sm text-gray-900" id="desc"></h6>
+                                        <h6 class="text-sm text-gray-900" id="price"></h6>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
-            &#8203;
-            <div
-                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <!-- Add a form to collect the product details -->
-                    <form>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                                Name
+
+            <div class="bg-white py-12 md:py-24">
+                <div class="mx-auto max-w-lg px-4 lg:px-8">
+                    <form class="grid grid-cols-6 gap-4">
+                        <div class="col-span-3">
+                            <label for="FirstName" class="block text-xs font-medium text-gray-700">
+                                First Name
                             </label>
-                            <input
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="name" type="text" placeholder="Product name">
+
+                            <input type="text" id="FirstName"
+                                class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
                         </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
-                                Description
+
+                        <div class="col-span-3">
+                            <label for="LastName" class="block text-xs font-medium text-gray-700">
+                                Last Name
                             </label>
-                            <textarea
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="description" placeholder="Product description"></textarea>
+
+                            <input type="text" id="LastName"
+                                class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
                         </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
-                                Price
+
+                        <div class="col-span-6">
+                            <label for="Email" class="block text-xs font-medium text-gray-700">
+                                Email
                             </label>
-                            <input
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="price" type="text" placeholder="Product price">
+
+                            <input type="email" id="Email"
+                                class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="Phone" class="block text-xs font-medium text-gray-700">
+                                Phone
+                            </label>
+
+                            <input type="tel" id="Phone"
+                                class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
+                        </div>
+
+                        <fieldset class="col-span-6">
+                            <legend class="block text-sm font-medium text-gray-700">
+                                Card Details
+                            </legend>
+
+                            <div class="mt-1 -space-y-px rounded-md bg-white shadow-sm">
+                                <div>
+                                    <label for="CardNumber" class="sr-only"> Card Number </label>
+
+                                    <input type="text" id="CardNumber" placeholder="Card Number"
+                                        class="relative mt-1 w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm" />
+                                </div>
+
+                                <div class="flex -space-x-px">
+                                    <div class="flex-1">
+                                        <label for="CardExpiry" class="sr-only"> Card Expiry </label>
+
+                                        <input type="text" id="CardExpiry" placeholder="Expiry Date"
+                                            class="relative w-full rounded-bl-md border-gray-200 focus:z-10 sm:text-sm" />
+                                    </div>
+
+                                    <div class="flex-1">
+                                        <label for="CardCVC" class="sr-only"> Card CVC </label>
+
+                                        <input type="text" id="CardCVC" placeholder="CVC"
+                                            class="relative w-full rounded-br-md border-gray-200 focus:z-10 sm:text-sm" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="col-span-6">
+                            <legend class="block text-sm font-medium text-gray-700">
+                                Billing Address
+                            </legend>
+
+                            <div class="mt-1 -space-y-px rounded-md bg-white shadow-sm">
+                                <div>
+                                    <label for="Country" class="sr-only">Country</label>
+                                    <div>
+                                        <label class="sr-only" for="PostalCode"> ZIP/Post Code </label>
+
+                                        <input type="text" id="PostalCode" placeholder="ZIP/Post Code"
+                                            class="relative w-full rounded-b-md border-gray-200 focus:z-10 sm:text-sm" />
+                                    </div>
+                                    <div>
+                                        <label class="sr-only" for="Address"> Address </label>
+
+                                        <input type="text" id="Address" placeholder="Full Address"
+                                            class="relative w-full rounded-b-md border-gray-200 focus:z-10 sm:text-sm" />
+                                    </div>
+                                </div>
+                        </fieldset>
+
+                        <div class="col-span-6">
+                            <button onclick="payItems()"
+                                class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg">
+                                Pay Now
+                            </button>
                         </div>
                     </form>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button
-                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                        onclick="addProduct()">
-                        Add
-                    </button>
-                    <button
-                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto"
-                        onclick="closeModal()">
-                        Cancel
-                    </button>
-                </div>
             </div>
         </div>
-    </div>
-    <div class=" flex flex-col">
-        <div class="overflow-x-auto">
-            <div class="py-2 align-middle inline-block min-w-full">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Name
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Description
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Price
-                                </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit/Delete</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="products" class="bg-white divide-y divide-gray-200">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
 
 
@@ -300,172 +351,59 @@
 
 </body>
 <script src='./js/app.js'></script>
-
-<!-- Add Item --->
 <script>
-    function openModal() {
-        document.getElementById('modal').classList.remove('hidden');
-    }
 
-    function closeModal() {
-        document.getElementById('modal').classList.add('hidden');
-    }
+    // Get the cart items from sessionStorage
+    const cartItems = JSON.parse(sessionStorage.getItem('cart'));
 
-    function addProduct() {
-        // Add code to handle the form data and add a new product to the table
-        var name = document.getElementById('name').value;
-        var description = document.getElementById('description').value;
-        var price = document.getElementById('price').value;
+    // Get a reference to the product list ul element
+    const productList = document.getElementById('product-list');
 
-        //Generate random ID
-        var id = Math.floor(Math.random() * 1000000000);
+    // Loop through each item in the cart and create a new li element for each
+    cartItems.forEach(item => {
+        // Create the new li element
+        const li = document.createElement('li');
+        li.classList.add('flex', 'items-center', 'gap-4', 'py-4');
 
-        const data = {
-            "Item": {
-                "Id": parseInt(id),
-                "Title": name,
-                "Description": description,
-                "Price": parseInt(price)
-            }
-        };
+        // Create the inner div element
+        const div = document.createElement('div');
 
-        fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Put request succeeded with JSON response:', data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the put request:', error);
-            });
+        // Create the name element
+        const name = document.createElement('h3');
+        name.classList.add('text-sm', 'text-gray-900');
+        name.textContent = item.name;
+        div.appendChild(name);
 
-        closeModal();
-    }
-</script>
+        // Create the description element (optional)
+        const desc = document.createElement('h6');
+        desc.classList.add('text-sm', 'text-gray-900');
+        desc.textContent = item.desc || ''; // If the item doesn't have a description, use an empty string
+        div.appendChild(desc);
+
+        // Create the price element
+        const price = document.createElement('h6');
+        price.classList.add('text-sm', 'text-gray-900');
+        price.textContent = '$' + item.price;
+        div.appendChild(price);
+
+        // Add the inner div element to the li element
+        li.appendChild(div);
+
+        // Append the new li element to the product list ul element
+        productList.appendChild(li);
+    });
+
+    totalVal = sessionStorage.getItem('total');
+
+    document.getElementById('total').innerHTML = '$' + totalVal + '.00';
 
 
-<!-- Fetch all Data -->
-<script>
-    const tbody = document.getElementById('products');
+    function payItems() {
+        sessionStorage.removeItem('cart');
 
-    // Fetch the data from the API
-    fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const jsonData = JSON.parse(data.body);
+        alert("Thank you for your purchase! We will contact you soon regarding your order.");
 
-            itemsArray = jsonData.Items;
-
-            // Loop through each item in the data and create a new tr element for each
-            itemsArray.forEach(item => {
-                console.log(item)
-                // Create the new tr element
-                const tr = document.createElement('tr');
-
-                // Create the name cell
-                const nameCell = document.createElement('td');
-                nameCell.classList.add('px-6', 'py-4', 'whitespace-nowrap');
-
-                const nameDiv = document.createElement('div');
-                nameDiv.classList.add('text-sm', 'font-medium', 'text-gray-900');
-                nameDiv.textContent = item.Title.S;
-
-                nameCell.appendChild(nameDiv);
-                tr.appendChild(nameCell);
-
-                // Create the description cell
-                const descCell = document.createElement('td');
-                descCell.classList.add('px-6', 'py-4', 'whitespace-nowrap');
-
-                const descDiv = document.createElement('div');
-                descDiv.classList.add('text-sm', 'text-gray-500');
-                descDiv.textContent = item.Description.S;
-
-                descCell.appendChild(descDiv);
-                tr.appendChild(descCell);
-
-                // Create the price cell
-                const priceCell = document.createElement('td');
-                priceCell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-500');
-                priceCell.textContent = '$' + item.Price.N;
-
-                tr.appendChild(priceCell);
-
-                // Create the actions cell
-                const actionsCell = document.createElement('td');
-                actionsCell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-right', 'text-sm', 'font-medium');
-
-                const editLink = document.createElement('a');
-                editLink.href = '#';
-                editLink.classList.add('text-indigo-600', 'hover:text-indigo-900');
-                editLink.textContent = 'Edit';
-
-                const deleteLink = document.createElement('a');
-                deleteLink.href = '#';
-                deleteLink.id = item.Id.N;
-                deleteLink.classList.add('text-red-600', 'hover:text-red-900', 'ml-4');
-                deleteLink.textContent = 'Delete';
-                deleteLink.addEventListener('click', function (event) {
-                    event.preventDefault(); // prevent the default link behavior
-                    const id = this.id; // get the id of the item to be deleted
-                    deleteProduct(id); // call the deleteProduct function with the specified id
-                });
-
-                actionsCell.appendChild(editLink);
-                actionsCell.appendChild(deleteLink);
-                tr.appendChild(actionsCell);
-
-                // Append the new tr element to the tbody element
-                tbody.appendChild(tr);
-            });
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-</script>
-
-<!-- Delete Product -->
-<script>
-    function deleteProduct(productId) {
-        console.log(productId);
-        fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "Item": {
-                    "Id": parseInt(productId)
-                }
-            })
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Delete request succeeded with JSON response:', data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the delete request:', error);
-            });
+        window.location.href = "./index.html";
     }
 </script>
 
