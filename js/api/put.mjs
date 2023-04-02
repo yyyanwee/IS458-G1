@@ -1,5 +1,5 @@
 import axios from 'axios';
-const axios = require('axios');
+// const axios = require('axios');
 
 const url = 'https://t1tvpydrmk.execute-api.ap-southeast-1.amazonaws.com/production';
 
@@ -36,3 +36,5 @@ axios(config)
   .catch((error) => {
     console.log(error);
   });
+
+  
