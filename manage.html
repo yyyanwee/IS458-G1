@@ -329,10 +329,13 @@
             }
         };
 
+        const authToken = sessionStorage.getItem('accessToken');
+
         fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production', {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': authToken
             },
             body: JSON.stringify(data)
         })
@@ -373,7 +376,6 @@
 
             // Loop through each item in the data and create a new tr element for each
             itemsArray.forEach(item => {
-                console.log(item)
                 // Create the new tr element
                 const tr = document.createElement('tr');
 
@@ -442,11 +444,14 @@
 <!-- Delete Product -->
 <script>
     function deleteProduct(productId) {
-        console.log(productId);
+
+        const authToken = sessionStorage.getItem('accessToken');
+
         fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production', {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': authToken
             },
             body: JSON.stringify({
                 "Item": {

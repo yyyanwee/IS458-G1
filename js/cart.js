@@ -1,5 +1,5 @@
 
-function createCartItemElement(name, price) {
+function createCartItemElement(name, price, description) {
     // create li element
     const li = document.createElement("li");
     li.classList.add("flex", "items-center", "gap-4");
@@ -23,13 +23,13 @@ function createCartItemElement(name, price) {
     // create p element for item description
     const pDesc = document.createElement("p");
     pDesc.classList.add("description", "text-sm", "text-gray-600");
-    pDesc.textContent = "Here is an item";
+    pDesc.textContent = "Description: " + description;
     div.appendChild(pDesc);
 
     // create p element for item price
     const pPrice = document.createElement("p");
     pPrice.classList.add("price", "text-sm", "text-gray-600");
-    pPrice.textContent = price;
+    pPrice.textContent = '$' + price;
     div.appendChild(pPrice);
 
     total += parseFloat(price);
@@ -127,7 +127,7 @@ function renderCartItems() {
 
     // loop through the cart array and create a li element for each item
     cart.forEach((item) => {
-        const li = createCartItemElement(item.name, item.price);
+        const li = createCartItemElement(item.name, item.price, item.description);
         ul.appendChild(li);
     });
 
