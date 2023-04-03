@@ -94,7 +94,7 @@ function createCartItemElement(name, price, description) {
         "transition-all",
         "duration-150"
     );
-    btnRemove.textContent = "Remove item from cart";
+    btnRemove.textContent = "Remove";
     btnRemove.addEventListener("click", () => {
         removeItemFromCart(name);
     });
