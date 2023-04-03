@@ -5,19 +5,12 @@ const url = 'https://t1tvpydrmk.execute-api.ap-southeast-1.amazonaws.com/product
 
 const requestBody = 
 {
-    "Item":{
-      "Id": 99,
-      "Title": "Book 99 Title",
-      "ISBN": "999-9999999999",
-      "Authors": [
-        "Author99"
-      ],
-      "Price": 99,
-      "Dimensions": "8.5 x 11.0 x 0.5",
-      "PageCount": 500,
-      "InPublication": false,
-      "ProductCatalog": "Book"  
-    }
+  "Item":{
+    "Id": 8,
+    "Title": "Exfoliating Scrub",
+    "Price": 20,
+    "Description": "Cleanse your skin without stripping it of its natural oils with our gentle, non-drying facial cleanser that leaves your skin feeling refreshed and soft", 
+  }
 };
 
 const config = {
