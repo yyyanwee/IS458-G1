@@ -417,6 +417,12 @@
             })
             .then(data => {
                 console.log('Put request succeeded with JSON response:', data);
+
+                alert('Product added successfully!');
+
+                // Refresh the page
+                location.reload();
+                
             })
             .catch(error => {
                 console.error('There was a problem with the put request:', error);
@@ -603,7 +609,9 @@
 
         const authToken = sessionStorage.getItem('accessToken');
 
-        fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production/${productId}', {
+        const url = 'https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production/' + productId;
+
+        fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -619,6 +627,11 @@
             })
             .then(data => {
                 console.log('Put request succeeded with JSON response:', data);
+
+                alert('Product updated successfully')
+
+                //Refresh page
+                location.reload();
             })
             .catch(error => {
                 console.error('There was a problem with the put request:', error);
