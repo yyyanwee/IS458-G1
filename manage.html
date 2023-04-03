@@ -551,6 +551,8 @@
             .then(data => {
                 console.log('Delete request succeeded with JSON response:', data);
 
+                alert('Product deleted successfully!')
+
                 // Remove the deleted item from the table
                 const row = document.getElementById(productId).parentNode.parentNode;
                 row.parentNode.removeChild(row);
