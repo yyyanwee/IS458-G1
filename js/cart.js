@@ -4,12 +4,6 @@ function createCartItemElement(name, price, description) {
     const li = document.createElement("li");
     li.classList.add("flex", "items-center", "gap-4");
 
-    // create image element
-    const img = document.createElement("img");
-    img.src = "./img/image.jpg";
-    img.alt = "";
-    img.classList.add("h-16", "w-16", "rounded", "object-cover");
-    li.appendChild(img);
 
     // create div element for item info
     const div = document.createElement("div");
