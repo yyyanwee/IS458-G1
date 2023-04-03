@@ -172,12 +172,75 @@
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <button
                         class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                        onclick="addProduct()">
+                        onclick="addProduct(0)">
                         Add
                     </button>
                     <button
                         class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto"
                         onclick="closeModal()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Define the modal 2 -->
+    <div id="modal2" class="z-10 inset-0 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+            &#8203;
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <!-- Add a form to collect the product details -->
+                    <form>
+                        <div class="mb-4">
+                            <label class="hidden block text-gray-700 text-sm font-bold mb-2" for="Id">
+                                Id
+                            </label>
+                            <input
+                                class="hidden shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="Id2" type="text" placeholder="Product name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                                Name
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="name2" type="text" placeholder="Product name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                                Description
+                            </label>
+                            <textarea
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="description2" placeholder="Product description"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                                Price
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="price2" type="text" placeholder="Product price">
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                        onclick="editProduct()">
+                        Edit Product
+                    </button>
+                    <button
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto"
+                        onclick="closeModal2()">
                         Cancel
                     </button>
                 </div>
@@ -311,15 +374,22 @@
         document.getElementById('modal').classList.add('hidden');
     }
 
-    function addProduct() {
+    function addProduct(productId) {
         // Add code to handle the form data and add a new product to the table
         var name = document.getElementById('name').value;
         var description = document.getElementById('description').value;
         var price = document.getElementById('price').value;
 
-        //Generate random ID
-        var id = Math.floor(Math.random() * 1000000000);
+        console.log(productId)
 
+        //Generate random ID
+        if (productId == 0) {
+            var id = Math.floor(Math.random() * 1000000000);
+        } else {
+            var id = productId;
+        }
+
+        console.log(productId)
         const data = {
             "Item": {
                 "Id": parseInt(id),
@@ -414,8 +484,14 @@
 
                 const editLink = document.createElement('a');
                 editLink.href = '#';
+                editLink.id = item.Id.N;
                 editLink.classList.add('text-indigo-600', 'hover:text-indigo-900');
                 editLink.textContent = 'Edit';
+                editLink.addEventListener('click', function (event) {
+                    event.preventDefault(); // prevent the default link behavior
+                    const id = this.id; // get the id of the item to be deleted
+                    editProductStart(id, item.Title.S, item.Description.S, item.Price.N); // call the editProduct function with the specified id
+                });
 
                 const deleteLink = document.createElement('a');
                 deleteLink.href = '#';
@@ -425,6 +501,7 @@
                 deleteLink.addEventListener('click', function (event) {
                     event.preventDefault(); // prevent the default link behavior
                     const id = this.id; // get the id of the item to be deleted
+
                     deleteProduct(id); // call the deleteProduct function with the specified id
                 });
 
@@ -467,10 +544,87 @@
             })
             .then(data => {
                 console.log('Delete request succeeded with JSON response:', data);
+
+                // Remove the deleted item from the table
+                const row = document.getElementById(productId).parentNode.parentNode;
+                row.parentNode.removeChild(row);
             })
             .catch(error => {
                 console.error('There was a problem with the delete request:', error);
             });
+
+
+    }
+</script>
+
+
+<!-- Edit Product -->
+<script>
+    function openModal2() {
+        document.getElementById('modal2').classList.remove('hidden');
+    }
+
+    function closeModal2() {
+        document.getElementById('modal2').classList.add('hidden');
+    }
+
+
+    function editProductStart(productId, name, description, price) {
+
+        console.log(productId)
+
+        document.getElementById('Id2').value = productId;
+        document.getElementById('name2').value = name;
+        document.getElementById('description2').value = description;
+        document.getElementById('price2').value = price;
+
+        openModal2()
+
+
+    }
+
+    function editProduct() {
+        // Add code to handle the form data and add a new product to the table
+        var name = document.getElementById('name2').value;
+        var description = document.getElementById('description2').value;
+        var price = document.getElementById('price2').value;
+        var productId = document.getElementById('Id2').value;
+
+        const data = {
+            "Item": {
+                "Id": parseInt(productId),
+                "Title": name,
+                "Description": description,
+                "Price": parseInt(price)
+            }
+        };
+
+        console.log(data)
+
+        const authToken = sessionStorage.getItem('accessToken');
+
+        fetch('https://tuit1syufc.execute-api.ap-southeast-1.amazonaws.com/production/${productId}', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authToken
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Put request succeeded with JSON response:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the put request:', error);
+            });
+
+        closeModal2();
     }
 </script>
 
